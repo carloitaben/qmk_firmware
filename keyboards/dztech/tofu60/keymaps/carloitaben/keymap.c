@@ -16,12 +16,11 @@
 
 #include QMK_KEYBOARD_H
 
-#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
-#define CAPS_WORD_INVERT_ON_SHIFT
-
-#define _BASE 0
-#define _FN 1
-#define _GAMING 2
+enum layers {
+    _BASE,
+    _FN,
+    _GAMING,
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_all(
@@ -46,3 +45,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, KC_LGUI, _______,                            KC_SPC,                                      _______, KC_RALT, KC_RGUI,
     ),
 };
+
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LGUI_T(KC_ESC):
+            // Immediately select the hold action when another key is tapped.
+            return true;
+        default:
+            // Do not select the hold action when another key is tapped.
+            return false;
+    }
+}
