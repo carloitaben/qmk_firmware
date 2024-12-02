@@ -17,27 +17,27 @@
 #include QMK_KEYBOARD_H
 
 enum layers {
-    _BASE,
-    _FN,
-    _GAMING,
+    BASE,
+    FN,
+    GAMING,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_BASE] = LAYOUT_all(
+    [BASE] = LAYOUT_all(
         KC_ESC,           KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSLS, KC_GRAVE,
         KC_TAB,           KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,          KC_BSPC,
         LGUI_T(KC_ESC),   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,                   KC_ENTER,
         KC_LSFT,          _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,                   KC_RSFT,
-        XXXXXXX, XXXXXXX, KC_LCTL, KC_LALT,                            LT(_FN, KC_SPC),                                      XXXXXXX, KC_RALT, KC_RCTL,
+        XXXXXXX, XXXXXXX, KC_LCTL, KC_LALT,                            LT(FN, KC_SPC),                                       XXXXXXX, KC_RALT, KC_RCTL,
     ),
-    [_FN] = LAYOUT_all(
+    [FN] = LAYOUT_all(
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_VOLD, KC_VOLU,
         _______, _______, KC_UP,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
         _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,                   _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______,
         _______, _______, _______, _______,                            _______,                                     _______, _______, _______,
     ),
-    [_GAMING] = LAYOUT_all(
+    [GAMING] = LAYOUT_all(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
         KC_LCTL, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                   _______,
@@ -50,8 +50,8 @@ const uint16_t PROGMEM combo_gaming_enter[] = {KC_LCTL, KC_RCTL, COMBO_END};
 const uint16_t PROGMEM combo_gaming_leave[] = {KC_LGUI, KC_RGUI, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(combo_gaming_enter, TG(_GAMING)),
-    COMBO(combo_gaming_leave, TG(_GAMING)),
+    COMBO(combo_gaming_enter, TG(GAMING)),
+    COMBO(combo_gaming_leave, TG(GAMING)),
 };
 
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
