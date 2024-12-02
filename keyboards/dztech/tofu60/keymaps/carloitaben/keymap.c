@@ -54,13 +54,13 @@ combo_t key_combos[] = {
     COMBO(combo_gaming_leave, TG(_GAMING)),
 };
 
-bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LGUI_T(KC_ESC):
-            // Immediately select the hold action when another key is tapped.
+            // Immediately select the hold action when another key is pressed.
             return true;
         default:
-            // Do not select the hold action when another key is tapped.
+            // Do not select the hold action when another key is pressed.
             return false;
     }
 }
